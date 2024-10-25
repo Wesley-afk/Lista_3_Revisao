@@ -1,0 +1,55 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.lista3_13;
+
+/**
+ *
+ * @author wpass
+ */
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Lista3_13 {
+
+    public static void main(String[] args) throws IOException {
+        Scanner ler = new Scanner(System.in);
+        int prod = 0;
+        
+        System.out.println("Quantos produtos voce deseja cadastrar?");
+        prod  = ler.nextInt();
+        ler.nextLine();
+        
+        String nomeProd[] = new String [prod];
+        
+        System.out.println("Insira o nome dos produtos:");
+        for (int i = 0; i < prod; i++) {
+            System.out.println("Produto: " +(i + 1));
+            nomeProd[i] = ler.nextLine();
+        }
+        
+        int prodPres[] = new int [prod];
+        
+        System.out.println("Digite o preco dos produtos");
+        for (int i = 0; i < prod; i++) {
+            System.out.println(nomeProd[i] + "-  ");
+            prodPres[i] = ler.nextInt();
+        }
+        
+        String message = "Lista dos Produtos";
+        for (int i = 0; i < prod; i++) {
+            message += nomeProd[i] + " custa "+ prodPres[i] + " rs \n";
+        }
+        
+        JOptionPane.showMessageDialog(null, message);
+        
+        PrintWriter writer = new PrintWriter (new FileWriter("produtos.txt"));
+        for (int i = 0; i < prod; i++) {
+            writer.println(nomeProd[i] + "Custa" + prodPres[i]);
+        }
+    }
+}
